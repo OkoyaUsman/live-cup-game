@@ -1,0 +1,220 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #111827;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#game-container {
+    background-color: #1f2937;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.page {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Instructions styles */
+.instructions-container {
+    background: rgba(31, 41, 55, 0.8);
+    border-radius: 20px;
+    padding: 1.5rem;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.instructions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.instruction-item:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.instruction-number {
+    background: #3b82f6;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.instruction-text {
+    font-size: 1.5rem;
+    color: #e5e7eb;
+    line-height: 1.4;
+}
+
+.highlight {
+    color: #60a5fa;
+    font-weight: bold;
+}
+
+/* Cup container styles */
+#cups-container, #reveal-cups-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Cup SVG styles */
+.cup-svg {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.cup-svg:hover {
+    transform: translateY(-5px);
+}
+
+/* Celebration animations */
+.confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Results page styles */
+#qualified-list,
+#disqualified-list {
+    height: 1000px;
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+}
+
+/* Add a fade effect at the bottom of the lists */
+#qualified-list::after,
+#disqualified-list::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(transparent, #1f2937);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Cup reveal page specific styles */
+#reveal-cups-container .cup-svg {
+    transform: scale(1.2);
+    margin: 2rem;
+}
+
+#reveal-cups-container .cup-svg:hover {
+    transform: scale(1.25);
+}
+
+/* Ball styles */
+.ball {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.ball.red {
+    filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.4));
+}
+
+.ball.black {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* Remove old ball reveal animation */
+@keyframes ballReveal {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Winners page styles */
+.winners-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 900px;
+    width: 100%;
+}
+
+.winner-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem 3rem;
+    border-radius: 1.5rem;
+    width: 100%;
+    text-align: center;
+    font-size: 3.5rem;
+    color: #fbbf24;
+    transform: scale(0);
+    animation: winnerReveal 0.5s ease-out forwards;
+    box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 3px solid rgba(251, 191, 36, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes winnerReveal {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Confetti container */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+} 

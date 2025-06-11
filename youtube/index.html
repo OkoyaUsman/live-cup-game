@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Cup Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <div id="game-container" class="w-[1920px] h-[1080px] mx-auto overflow-hidden relative">
+        <!-- Page 1: Start -->
+        <div id="page1" class="page absolute inset-0 hidden">
+            <div class="flex flex-col items-center justify-center h-full">
+                <h1 class="text-7xl font-bold text-green-400 mb-8 pb-10">Welcome to YouTube Cup Game</h1>
+                <div class="instructions-container">
+                    <h2 class="text-5xl font-bold text-center mb-12 text-blue-400">How to Play</h2>
+                    <div class="grid grid-cols-2 gap-8">
+                        <ol class="instructions-list">
+                            <li class="instruction-item">
+                                <span class="instruction-number">1</span>
+                                <span class="instruction-text text-4xl font-semibold">Select a cup by sending your cup number in the chat.</span>
+                            </li>
+                            <li class="instruction-item">
+                                <span class="instruction-number">2</span>
+                                <span class="instruction-text text-4xl font-semibold">You have <span class="highlight text-yellow-400">30 seconds</span> to make your selection</span>
+                            </li>
+                            <li class="instruction-item">
+                                <span class="instruction-number">3</span>
+                                <span class="instruction-text text-4xl font-semibold">If you select the cup with the <span class="highlight text-grey-400">BLACK</span> ball, you advance to the next round</span>
+                            </li>
+                        </ol>
+                        <ol class="instructions-list" start="4">
+                            <li class="instruction-item">
+                                <span class="instruction-number">4</span>
+                                <span class="instruction-text text-4xl font-semibold">If you select the cup with the <span class="highlight text-red-400">RED</span>, you're eliminated</span>
+                            </li>
+                            <li class="instruction-item">
+                                <span class="instruction-number">5</span>
+                                <span class="instruction-text text-4xl font-semibold">The last players standing wins!</span>
+                            </li>
+                            <li class="instruction-item">
+                                <span class="instruction-number">6</span>
+                                <span class="instruction-text text-4xl font-semibold">You can replace your choice by sending another number before the countdown ends</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <p class="text-3xl mt-6 pt-6">Next game will start after the countdown ends >>></p>
+            </div>
+        </div>
+
+        <!-- Page 2: Cups -->
+        <div id="page2" class="page absolute inset-0 hidden mt-16">
+            <div class="flex flex-col items-center mb-12">
+                <div id="round-info" class="text-6xl font-bold mt-8">Round 1</div>
+                <div class="text-4xl text-yellow-400 mt-8">Send the cup number to choose.</div>
+                <div id="cups-container" class="mt-8 flex flex-wrap justify-center gap-4"></div>
+                <div id="active-players" class="text-4xl text-green-400 mt-8">Active Players: 0</div>
+            </div>
+            <div id="results-container" class="hidden">
+                <div class="flex justify-between items-start space-x-8">
+                    <!-- Qualified Players Column -->
+                    <div class="flex-1 bg-white/10 backdrop-blur-sm p-6 shadow-lg">
+                        <h3 class="text-2xl font-bold text-green-400 mb-8">QUALIFIED:</h3>
+                        <div class="players-list space-y-3 overflow-y-hidden h-[300px]">
+                            <!-- Qualified players will be listed here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Disqualified Players Column -->
+                    <div class="flex-1 bg-white/10 backdrop-blur-sm p-6 shadow-lg">
+                        <h3 class="text-2xl font-bold text-red-400 mb-8">DISQUALIFIED:</h3>
+                        <div class="players-list space-y-3 overflow-y-hidden h-[300px]">
+                            <!-- Disqualified players will be listed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: Winners -->
+        <div id="page3" class="page absolute inset-0 hidden">
+            <div class="flex flex-col items-center justify-center h-full">
+                <h2 class="text-7xl font-bold mb-16 text-yellow-400">Winners</h2>
+                <div id="winners-list" class="winners-container"></div>
+            </div>
+        </div>
+
+        <!-- Page 4: Game Over -->
+        <div id="page4" class="page absolute inset-0 hidden">
+            <div class="flex flex-col items-center justify-center h-full">
+                <h2 class="text-7xl font-bold mb-12">Game Over!</h2>
+                <div class="text-4xl">No one qualified. Starting a new game in 10 seconds...</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
