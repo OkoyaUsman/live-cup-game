@@ -39,8 +39,8 @@ cupgame/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/okoyausman/cupgame.git
-cd cupgame
+git clone https://github.com/okoyausman/live-cup-game.git
+cd live-cup-game
 ```
 
 2. Install the required dependencies:
