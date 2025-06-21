@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 port = 8765
 votes = []
-client = TikTokLiveClient(unique_id="@your_tiktok_username")
+client = TikTokLiveClient(unique_id="@demotivational69")
 
 class GameConfig:
     def __init__(self):
